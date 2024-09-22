@@ -1,0 +1,153 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background-color: #fff;
+  height: 100vh;
+  font-family: 'Arial', sans-serif;
+  position: relative;
+}
+
+.imageContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.logoLeft {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.logoRight {
+  width: 200px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.leftSection {
+  text-align: center;
+  margin-bottom: 20px;
+  z-index: 1;
+
+}
+
+.userIcon {
+  font-size: 20px;
+
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #000;
+}
+
+.title span {
+  color: #FFD700;
+}
+
+.subTitle {
+  font-size: 16px;
+  color: #777;
+  margin-bottom: 40px;
+}
+
+.formContainer {
+  width: 100%;
+  max-width: 400px;
+}
+
+.inputContainer {
+  margin-bottom: 20px;
+}
+
+.inputContainer label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #555;
+}
+
+.inputField {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.inputField::placeholder {
+  color: #aaa;
+}
+
+.inputField:focus {
+  border-color: #FFD700;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.forgotPassword {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.forgotPassword a {
+  color: #FFA500;
+  text-decoration: none;
+}
+
+.loginButton {
+  background-color: #FFD700;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.loginButton:hover {
+  background-color: #FFC107;
+  transition: background-color 0.3s ease;
+}
+
+.divider {
+  text-align: center;
+  margin: 20px 0;
+  color: #777;
+}
+
+.socialLogin {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.socialIcon {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.register {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register a {
+  color: #FFA500;
+  text-decoration: none;
+}

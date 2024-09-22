@@ -1,0 +1,201 @@
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.paragrapha {
+  text-align: center;
+  margin-bottom: 40px;
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  gap: 30px;
+  margin: 20px;
+  width: 100%;
+}
+
+.servicoCard {
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.servicoCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+
+.servicoImage {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 15px;
+  transition: opacity 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.servicoCard:hover .servicoImage {
+  opacity: 0.9;
+}
+
+.servicoInfo {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.servicoInfo p {
+  margin: 5px 0;
+}
+
+.servicoInfo p:first-child {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.servicoInfo p:nth-child(2),
+.servicoInfo p:nth-child(3) {
+  font-size: 14px;
+  color: #777;
+}
+
+.servicoInfo p:nth-child(4) {
+  font-size: 16px;
+  color: green;
+  font-weight: 600;
+}
+
+.servicoButton {
+  background-color: #6200ea;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+.servicoButton:hover {
+  background-color: #8172e6;
+}
+
+
+/* Modal Agendamento */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: #1F1F1F;
+  padding: 20px;
+  border-radius: 10px;
+  width: 350px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  color: white;
+}
+
+.modalHeader {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.modalForm label {
+  display: block;
+  color: #AAA;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.modalForm input,
+.modalForm textarea,
+.modalForm select {
+  width: 90%;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 15px;
+  background-color: #333;
+  color: white;
+}
+
+
+.dateTimeContainer {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.dateInput,
+.timeInput {
+  position: relative;
+  width: 100%;
+}
+
+.dateInput input,
+.timeInput input {
+  border-radius: 5px;
+  border: none;
+  background-color: #333;
+  color: white;
+}
+
+.dateInput::before,
+.timeInput::BEFORE {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10px;
+  pointer-events: none;
+}
+
+.dateInput::BEFORE {
+  content: '\1F4C5';
+  font-size: 18px;
+  color: #8172e6;
+}
+
+.timeInput::before {
+  content: '\23F0';  
+  font-size: 20px;
+  color: #8172e6;
+}
+
+
+.modalForm button {
+  width: 100%;
+  padding: 12px;
+  background-color: #6200ea;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.modalForm button:hover {
+  background-color: #8172e6;
+}

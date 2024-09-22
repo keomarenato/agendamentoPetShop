@@ -1,0 +1,172 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+
+// schema.prisma
+model Usuario {
+  id           Int           @id @default(autoincrement())
+  nome         String        @db.VarChar(100)
+  email        String        @unique @db.VarChar(255)
+  senha        String        @db.VarChar(255)
+  telefone     String
+  tipo         TipoUsuario
+  pets         Pet[]
+  agendamentos Agendamento[]
+  hospedagens  Hospedagem[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  @@map("usuarios")
+}
+
+enum TipoUsuario {
+  USUARIO
+  FUNCIONARIO
+  ADMINISTRADOR
+}
+
+model Pet {
+  id              Int           @id @default(autoincrement())
+  nome            String        @db.VarChar(100)
+  tipo            TipoPet
+  raca            String        @db.VarChar(100)
+  peso            Float?
+  cor             String        @db.VarChar(100)
+  dataNascimento  String? 
+  imagemUrl       String?
+  usuarioId       Int
+  usuario         Usuario       @relation(fields: [usuarioId], references: [id])
+  agendamentos    Agendamento[]
+  hospedagens     Hospedagem[]
+  consultas       ConsultaVeterinaria[] @relation("ConsultasPet")
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@map("pets")
+}
+
+model Servico {
+  id            Int           @id @default(autoincrement())
+  nome          String        @db.VarChar(100)
+  tipo          String  
+  duracao       Int          
+  preco         Float
+  descricao     String?       @db.VarChar(500)
+  imagemServico String?
+  agendamentos  Agendamento[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@map("servicos")
+}
+
+model Profissional {
+  id            Int           @id @default(autoincrement())
+  nome          String        @db.VarChar(100)
+  especialidade String        @db.VarChar(100) 
+  telefone      String        @db.VarChar(20)
+  imagemProfissional     String?
+  agendamentos  Agendamento[]  
+  disponibilidades DisponibilidadeProfissional[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  @@map("profissionais")
+}
+
+model DisponibilidadeProfissional {
+  id             Int           @id @default(autoincrement())
+  profissionalId Int
+  diaDaSemana    String        @db.VarChar(20)
+  horaInicio     String        @db.VarChar(10)
+  horaFim        String        @db.VarChar(10)
+  profissional   Profissional  @relation(fields: [profissionalId], references: [id])
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+
+  @@map("disponibilidade_profissionais")
+}
+
+model Agendamento {
+  id             Int                  @id @default(autoincrement())
+  data           DateTime
+  horario        String               @db.VarChar(10)  
+  observacoes    String               @db.VarChar(100)
+  telefone       String               @db.VarChar(100)
+  petId          Int
+  servicoId      Int
+  usuarioId      Int
+  profissionalId Int?                  
+  tipoAgendamento TipoAgendamento      
+  status         StatusAgendamento    @default(PENDENTE)
+  pet            Pet                  @relation(fields: [petId], references: [id])
+  servico        Servico              @relation(fields: [servicoId], references: [id])
+  usuario        Usuario              @relation(fields: [usuarioId], references: [id])
+  profissional   Profissional?        @relation(fields: [profissionalId], references: [id])
+  consultas      ConsultaVeterinaria[]  
+  createdAt      DateTime             @default(now())
+  updatedAt      DateTime             @updatedAt
+
+  @@map("agendamentos")
+}
+
+enum TipoAgendamento {
+  SERVICO
+  CONSULTA_VETERINARIA
+}
+
+model ConsultaVeterinaria {
+  id            Int                  @id @default(autoincrement())
+  agendamentoId Int                  
+  petId         Int
+  diagnostico   String               @db.VarChar(500)
+  receita       String               @db.VarChar(500)
+  observacoes   String?              @db.VarChar(500)
+  agendamento   Agendamento          @relation(fields: [agendamentoId], references: [id])
+  pet           Pet                  @relation("ConsultasPet", fields: [petId], references: [id])
+  createdAt     DateTime             @default(now())
+  updatedAt     DateTime             @updatedAt
+
+  @@map("consultas_veterinarias")
+}
+
+model Hospedagem {
+  id         Int      @id @default(autoincrement())
+  dataInicio DateTime  
+  dataFim    DateTime  
+  petId      Int
+  pet        Pet      @relation(fields: [petId], references: [id])
+  usuarioId  Int
+  usuario    Usuario  @relation(fields: [usuarioId], references: [id])
+  diaria     Float  
+  total      Float  
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("hospedagens")
+}
+
+enum TipoPet {
+  CACHORRO
+  GATO
+  OUTRO
+}
+
+enum StatusAgendamento {
+  PENDENTE
+  CONCLUIDO
+  CANCELADO
+}

@@ -1,0 +1,109 @@
+.content {
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 5px;
+    width: 70%;
+    color: #fff;
+    background-color: #20232a;
+    margin-left: 340px;
+}
+
+.datePickerContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.datePicker {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.datePicker::before {
+    content: "📅";
+    margin-right: 10px;
+}
+
+h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 5px 0;
+}
+
+.section {
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #333;
+}
+
+.section h2 {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.timeSlot {
+    color: #909090;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.agendamento {
+
+    padding: 10px 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agendamento p {
+    margin: 0;
+    font-size: 14px;
+    color: #c0c0c0;
+}
+
+.agendamento strong {
+    font-weight: bold;
+    font-size: 16px;
+    color: #fff;
+}
+
+.agendamento div {
+    display: flex;
+    flex-direction: column;
+}
+
+button {
+    background-color: transparent;
+    color: #909090;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: color 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+}
+
+button:hover {
+    opacity: 1;
+    color: #fff;
+}
+
+.icon {
+    margin-right: 10px;
+    color: #fff;
+    font-size: 18px;
+}
